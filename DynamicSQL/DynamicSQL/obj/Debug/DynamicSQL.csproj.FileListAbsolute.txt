@@ -1,0 +1,9 @@
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\bin\Debug\DynamicSQL.exe.config
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\bin\Debug\DynamicSQL.exe
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\bin\Debug\DynamicSQL.pdb
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\obj\Debug\DynamicSQL.csprojResolveAssemblyReference.cache
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\obj\Debug\DynamicSQL.Form1.resources
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\obj\Debug\DynamicSQL.Properties.Resources.resources
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\obj\Debug\DynamicSQL.csproj.GenerateResource.Cache
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\obj\Debug\DynamicSQL.exe
+C:\Users\Cyberadmin\Desktop\DynamicSQL\DynamicSQL\DynamicSQL\obj\Debug\DynamicSQL.pdb
