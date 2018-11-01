@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -65,18 +64,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Items:";
             this.label2.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(12, 69);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(144, 89);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Please select a database from the list on the left.";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // comboBox1
             // 
@@ -118,7 +105,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -131,7 +117,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBox1;
