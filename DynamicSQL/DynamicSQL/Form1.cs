@@ -19,7 +19,8 @@ namespace DynamicSQL
         }
 
         List<string> _databaseItems = new List<string>();
-        List<string> _itemDependancies = new List<string>();
+        List<string> _itemDependencies = new List<string>();
+        List<string> _itemDependents = new List<string>();
         string connectionString = null;
 
 
@@ -67,12 +68,13 @@ namespace DynamicSQL
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //select item
+            _databaseItems.Clear();
             listBox2.Visible = true;
             label2.Visible = true;
             SqlConnection cnn;
-            connectionString = @"Data Source=PL8\MTCDB;Initial Catalog=master;Trusted_Connection=True;";
+            connectionString = (@"Data Source=PL8\MTCDB;Initial Catalog="+ comboBox1.SelectedItem +";Trusted_Connection=True;");
             cnn = new SqlConnection(connectionString);
-            SqlCommand getDB = new SqlCommand((@"select name from sysobjects where xtype IN ('IT', 'V', 'P') AND uid = " + (comboBox1.SelectedIndex + 1)), cnn);
+            SqlCommand getDB = new SqlCommand((@"select Table_schema, Table_name from INFORMATION_SCHEMA.TABLES UNION Select SPECIFIC_SCHEMA, SPECIFIC_NAME from INFORMATION_SCHEMA.ROUTINES where ROUTINE_TYPE = 'Procedure'"), cnn);
             SqlDataAdapter SQLDA = new SqlDataAdapter(getDB);
             DataTable DBs = new DataTable();
             SQLDA.Fill(DBs);
@@ -80,7 +82,9 @@ namespace DynamicSQL
 
             for (int i = 0; i < DBs.Rows.Count; i++)
             {
-                string dbName = DBs.Rows[i][0].ToString();
+                string dbName = DBs.Rows[i][0].ToString() + "." + DBs.Rows[i][1].ToString();
+
+
                 _databaseItems.Add(dbName);
                 //get list of databases from server & put them in the listbox
             }
@@ -100,30 +104,37 @@ namespace DynamicSQL
             listBox1.Visible = true;
             label3.Visible = true;
             SqlConnection cnn;
-            connectionString = @"Data Source=PL8\MTCDB;Initial Catalog=master;Trusted_Connection=True;";
+            connectionString = (@"Data Source=PL8\MTCDB;Initial Catalog=" + comboBox1.SelectedItem + ";Trusted_Connection=True;");
             cnn = new SqlConnection(connectionString);
             SqlCommand getDB = new SqlCommand((@"EXEC sp_depends @objname = N'" + listBox2.SelectedItem + "';"), cnn);
             SqlDataAdapter SQLDA = new SqlDataAdapter(getDB);
-            DataTable DBs = new DataTable();
+            DataSet DBs = new DataSet();
             SQLDA.Fill(DBs);
             //opens connection to sql 
-            if (DBs.Rows.Count != 0)
+            if (DBs.Tables[0].Rows.Count != 0)
             {
 
-            for (int i = 0; i < DBs.Rows.Count; i++)
-            {
-                string dbName = DBs.Rows[i][0].ToString();
-                _itemDependancies.Add(dbName);
-                //get list of databases from server & put them in the listbox
-            }
+
+                for (int i = 0; i < DBs.Tables[0].Rows.Count; i++)
+                {
+                    _itemDependents.Add(DBs.Tables[0].Rows[i][0].ToString());
+                }
+
+                for (int i = 0; i < DBs.Tables[1].Rows.Count; i++)
+                {
+
+                    _itemDependencies.Add(DBs.Tables[0].Rows[i][0].ToString());
+
+                }
             }
             else
             {
-                _itemDependancies.Add("No references exist for this object.");
+                _itemDependencies.Add("No references exist for this object.");
             }
 
-            listBox1.DataSource = _itemDependancies;
-
+            listBox1.DataSource = _itemDependencies;
+            listBox3.DataSource = _itemDependents;
+            
         }
     }
 }
